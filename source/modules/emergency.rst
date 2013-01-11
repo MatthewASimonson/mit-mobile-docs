@@ -1,0 +1,77 @@
+.. _module.Emergency:
+
+Emergency
+~~~~~~~~~
+  
+Default Commmand
+****************
+
+Description
+^^^^^^^^^^^
+
+  This command returns an array of all of the current emergency notices for the MIT campus.
+
+Parameters
+^^^^^^^^^^
+  
+Response Schema
+^^^^^^^^^^^^^^^
+
+.. code-block:: json
+
+  {
+    "type" : "array",
+    "items" : { "$ref" : "emergency.Contact"}
+  }
+
+Example Request
+^^^^^^^^^^^^^^^
+
+.. highlight:: http
+
+Request::
+
+  GET /api/index.php?module=emergency&command=contacts HTTP/1.0
+  Host: m.mit.edu
+  Accept: application/json
+  Accept-Charset: utf-8
+
+
+Response::
+  
+  HTTP/1.1 200 OK
+  Date: Wed, 04 Jan 2012 14:54:22 GMT
+  Connection: close
+  Content-Type: application/json; charset=UTF-8
+  
+  [
+    {
+        "contact": "MIT Police", 
+        "phone": "6172531212"
+    }, 
+    {
+        "contact": "MIT Medical", 
+        "description": "24-hour urgent care", 
+        "phone": "6172531311"
+    }, 
+    {
+        "contact": "Emergency Status", 
+        "description": "recorded updates", 
+        "phone": "617253SNOW"
+    }, 
+    {
+        "contact": "International SOS", 
+        "description": "emergency medical and security evacuation services for those traveling abroad on MIT business", 
+        "phone": "6172532823"
+    }, 
+    {
+        "contact": "Facilities", 
+        "description": "24-hour emergency repairs", 
+        "phone": "6172534948"
+    }, 
+    {
+        "contact": "Safe Ride", 
+        "description": "campus transportation 6pm-3am", 
+        "phone": "6172532997"
+    }
+  ]
