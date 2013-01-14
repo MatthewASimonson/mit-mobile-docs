@@ -1,0 +1,73 @@
+.. _module.Emergency.Default:
+
+Default
+*******
+
+Description
+^^^^^^^^^^^
+
+  This command returns an array of all of the current emergency notices for the MIT campus.
+
+Parameters
+^^^^^^^^^^
+  
+Response Schema
+^^^^^^^^^^^^^^^
+
+.. code-block:: json
+
+  {
+    "type" : "array",
+    "items" : { "$ref" : "emergency.Contact"}
+  }
+
+Example Request
+^^^^^^^^^^^^^^^
+
+.. highlight:: http
+
+Request::
+
+  GET /api/index.php?module=emergency HTTP/1.0
+  Host: m.mit.edu
+  Accept: application/json
+
+
+Response::
+  
+  HTTP/1.1 200 OK
+  Date: Wed, 04 Jan 2012 14:32:48 GMT
+  Connection: close
+  Content-Type: application/json; charset=UTF-8
+  
+  [
+      {
+          "date": {
+              "day": 16, 
+              "error_count": 0, 
+              "errors": [], 
+              "fraction": 0, 
+              "hour": 14, 
+              "is_localtime": false, 
+              "minute": 30, 
+              "month": 11, 
+              "relative": {
+                  "day": 0, 
+                  "hour": 0, 
+                  "minute": 0, 
+                  "month": 0, 
+                  "second": 0, 
+                  "weekday": 3, 
+                  "year": 0
+              }, 
+              "second": 0, 
+              "warning_count": 0, 
+              "warnings": [], 
+              "year": 2011
+          }, 
+          "text": "\n\n\tThis is a TEST of MIT Alert, MIT's Emergency messaging system. During an actual emergency, up to date information will be provided at this website.   TEST TEST TEST</p>\n\n      \n      ", 
+          "title": "Emergency Information", 
+          "unixtime": 1321471800, 
+          "version": "35"
+      }
+  ]

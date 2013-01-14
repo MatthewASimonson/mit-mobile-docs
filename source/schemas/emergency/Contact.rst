@@ -1,7 +1,7 @@
-.. _emergency.Contact:
+.. _schema.emergency.Contact:
 
 emergency.Contact
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 Schema
 ******
@@ -21,6 +21,4 @@ Schema
 Used By
 *******
 
-* Modules
-
-  * :ref:`module.Emergency`
+* :ref:`module.Emergency`

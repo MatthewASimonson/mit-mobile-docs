@@ -12,8 +12,8 @@ Contents:
   :numbered:
   :maxdepth: 2
 
-  modules
-  datatypes
+  modules/modules
+  schemas/schemas
 
 * :ref:`genindex`
 * :ref:`modindex`

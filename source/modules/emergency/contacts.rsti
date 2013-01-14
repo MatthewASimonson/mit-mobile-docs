@@ -1,19 +1,13 @@
-.. _module.Emergency:
+.. _module.Emergency.Contacts:
 
-Emergency
-~~~~~~~~~
-  
-Default Commmand
-****************
+Contacts
+********
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an array of all of the current emergency notices for the MIT campus.
+  This command will return a list of all the emergency contacts for MIT. This command only supports the GET verb and will return a 200 HTTP status code on success.
 
-Parameters
-^^^^^^^^^^
-  
 Response Schema
 ^^^^^^^^^^^^^^^
 

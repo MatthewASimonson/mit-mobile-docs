@@ -1,4 +1,4 @@
-.. _:
+.. _schema.:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9,10 +9,12 @@ Schema
 .. code-block:: json
 
 
+Referenced Types
+****************
+
+* :ref:`schema.`
 
 Used By
 *******
 
-* Modules
-
-* Schemas
+* :ref:`module.`

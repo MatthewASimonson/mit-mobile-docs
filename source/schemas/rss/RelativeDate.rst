@@ -1,7 +1,7 @@
-.. _rss.RelativeDate:
+.. _schema.rss.RelativeDate:
 
 rss.RelativeDate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 Schema
 ******
@@ -19,16 +19,10 @@ Schema
          "month" : {"type" : "number"},
          "second" : {"type" : "number"},
          "weekday" : {"type" : "number"},
-         "year" : {"type" : "number"}
+         "year" : {"type" : "number"}
        }}
 
 Used By
 *******
 
-* Modules
-
-  * :ref:`module.Emergency`
-
-* Schemas
-
-  * :ref:`rss.Entry`
+* :ref:`module.Emergency`
