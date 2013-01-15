@@ -1,0 +1,58 @@
+.. _module.Calendar.Day:
+
+Day
+***
+
+Description
+^^^^^^^^^^^
+
+  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+
+Parameters
+^^^^^^^^^^
+
+ ======== ======== ====== ==========
+  Name     Type     Verb   Required
+ ======== ======== ====== ==========
+  *time*   integer  GET    No
+  *type*   string   GET    No
+ ======== ======== ====== ==========
+
+Response Schema
+^^^^^^^^^^^^^^^
+
+  .. code-block:: json
+
+    { "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "longName" : { "type" : "string" },
+          "shortName" : { "type" : "string" },
+          "type" : { "type" : "string" },
+          "hasCategories" : {
+            "type" : "boolean",
+            "required" : false }}}}
+
+Example Request
+^^^^^^^^^^^^^^^
+
+  .. highlight:: http
+
+  Request::
+
+    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    Host: m.mit.edu
+    Accept: application/json
+
+
+  Response::
+  
+    HTTP/1.1 200 OK
+    Connection: close
+    Content-Type: application/json; charset=UTF-8
+
+    [{
+      "longName":"Today's Exhibits",
+      "shortName":"Exhibits",
+      "type":"Exhibits" }]

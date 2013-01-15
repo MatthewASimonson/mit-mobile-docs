@@ -40,4 +40,4 @@ Schema
 Referenced Types
 ****************
 
-* :ref:`schema.rss.RelativeDate`
+* :ref:`RSS.RelativeDate <schema.rss.RelativeDate>`

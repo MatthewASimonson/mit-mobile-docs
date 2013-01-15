@@ -7,3 +7,4 @@ API Modules
   :glob:
   
   emergency/index
+  people/index

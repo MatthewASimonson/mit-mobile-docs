@@ -1,13 +1,19 @@
 .. _schema.:
+.. |type| replace:: people.Info
 
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|type|
+~~~~~~
 
 Schema
 ******
 
-.. code-block:: json
-
+  .. code-block:: json
+      { "name" : "|type|",
+        "id" : "|type|",
+        "type" : "object",
+        "properties" : {
+        
+        }
 
 Referenced Types
 ****************

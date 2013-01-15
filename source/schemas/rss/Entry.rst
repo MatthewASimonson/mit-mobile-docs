@@ -23,10 +23,10 @@ Schema
 Referenced Types
 ****************
 
-* :ref:`schema.rss.Date`
+* :ref:`RSS.Date <schema.rss.Date>`
 
 
 Used By
 *******
 
-* :ref:`module.Emergency`
+* :ref:`Emergency (module) <module.Emergency>`

@@ -21,4 +21,4 @@ Schema
 Used By
 *******
 
-* :ref:`module.Emergency`
+* :ref:`Emergency (module) <module.Emergency>`

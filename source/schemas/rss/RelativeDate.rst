@@ -21,8 +21,3 @@ Schema
          "weekday" : {"type" : "number"},
          "year" : {"type" : "number"}
        }}
-
-Used By
-*******
-
-* :ref:`module.Emergency`
