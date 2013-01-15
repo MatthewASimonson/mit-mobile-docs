@@ -1,12 +1,12 @@
-.. _module.Calendar.Default:
+.. _module.Calendar.Holidays:
 
-Default
-*******
+Holidays
+********
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  This command returns an array of all the institutional holidays. This command does not have any additional parameters.
 
 Response Schema
 ^^^^^^^^^^^^^^^
@@ -17,12 +17,10 @@ Response Schema
       "items" : {
         "type" : "object",
         "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+          "end" : { "type" : "number" },
+          "id" : { "type" : "number" },
+          "start" : { "type" : "number" },
+          "title" : { "type" : "string" }}}}
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -31,7 +29,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    GET /api/index.php?module=calendar&command=holidays HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
@@ -42,7 +40,23 @@ Example Request
     Connection: close
     Content-Type: application/json; charset=UTF-8
 
-    [{
-      "longName":"Today's Exhibits",
-      "shortName":"Exhibits",
-      "type":"Exhibits" }]
+    [
+        {
+            "end": 1341374400, 
+            "id": 452067940, 
+            "start": 1341374400, 
+            "title": "Independence Day -- Holiday."
+        }, 
+        {
+            "end": 1346644800, 
+            "id": 1860915366, 
+            "start": 1346644800, 
+            "title": "Labor Day -- Holiday."
+        }, 
+        {
+            "end": 1348200000, 
+            "id": 1830490905, 
+            "start": 1348200000, 
+            "title": "Student Holiday -- no classes."
+        }
+    ]

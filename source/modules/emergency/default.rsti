@@ -6,18 +6,68 @@ Default
 Description
 ^^^^^^^^^^^
 
-  This command returns an array of all of the current emergency notices for the MIT campus. Upon success, the response will have a 200 status code and will contain array of :ref:`RSS.Entry <schema.Rss.Entry>` objects.
+  This command returns an array of all of the current emergency notices for the MIT campus. Upon success, the response will have a 200 status code.
 
 
 Response Schema
 ^^^^^^^^^^^^^^^
 
-  .. code-block:: json
+emergency.Entry
+###############
+  
+    .. code-block:: json
 
-    {
-      "type" : "array",
-      "items" : { "$ref" : "RSS.Entry"}
-    }
+      { "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+          "text": {"type" : "string"}, 
+          "title": {"type" : "string"},
+          "date" : { "$ref" : "rss.Date"},
+          "unixtime": 1321471800, 
+          "version": "35"}}}
+  
+rss.Date
+########
+  
+  .. code-block:: json
+  
+    { "type" : "object",
+      "properties" : {
+        "is_localtime" : {"type" : "boolean"},
+        "year" : {"type" : "number"},
+        "month" : {"type" : "number"},
+        "day" : {"type" : "number"},
+        "fraction" : {"type" : "number"},
+        "hour" : {"type" : "number"},
+        "minute" : {"type" : "number"},
+        "second" : {"type" : "number"},
+        "unixtime": {"type" : "number"}, 
+        "version": {"type" : "string"},
+        "relative" : {
+          "type" : "object",
+          "properties" : {
+            "day" : {"type" : "number"},
+            "hour" : {"type" : "number"},
+            "minute" : {"type" : "number"},
+            "month" : {"type" : "number"},
+            "second" : {"type" : "number"},
+            "weekday" : {"type" : "number"},
+            "year" : {"type" : "number"}
+          }},
+
+        "warning_count" : {"type" : "number"},
+        "warnings" : {
+          "type" : "array",
+          "items" : {"type" : "string"}
+        },
+          
+        "error_count" : {"type" : "number"},
+        "errors" : {
+          "type" : "array",
+          "items" : {"type" : "string"}}}}
+  
+    
 
 Example Request
 ^^^^^^^^^^^^^^^

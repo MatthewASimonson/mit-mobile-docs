@@ -6,17 +6,21 @@ Contacts
 Description
 ^^^^^^^^^^^
 
-  This command will return a list of all the emergency contacts for MIT.  Upon success, the response will have a 200 status code and will contain array of :ref:`Emergency.Contact <schema.Emergency.Contact>` objects.
+  This command will return a list of all the emergency contacts for MIT.  Upon success, the response will have a 200 status code and will contain an array of JSON objects.
 
 Response Schema
 ^^^^^^^^^^^^^^^
 
   .. code-block:: json
 
-    {
-      "type" : "array",
-      "items" : { "$ref" : "Emergency.Contact"}
-    }
+    { "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "contact" : {"type" : "string", "required" : true},
+          "phone" : {"type" : "string", "required" : true},
+          "description" : {"type" : "string", "required" : false}
+        }}}
 
 Example Request
 ^^^^^^^^^^^^^^^

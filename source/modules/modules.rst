@@ -5,6 +5,7 @@ API Modules
 .. toctree::
   :maxdepth: 1
   :glob:
-  
-  emergency/index
-  people/index
+
+  calendar/_index
+  emergency/_index
+  people/_index

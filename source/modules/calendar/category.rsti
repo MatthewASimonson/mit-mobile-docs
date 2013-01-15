@@ -1,12 +1,37 @@
-.. _module.Calendar.Default:
+.. _module.Calendar.Category:
 
-Default
-*******
+Category
+********
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  This command returns an array of the events for a specified category. An optional *start* and *end* timestamp may be specified. Behavior is undefined if *end* occurs before *start* or vice-versa
+
+Parameters
+^^^^^^^^^^
+
+ ======== ======== ====== ========== ==========================
+  Name     Type     Verb   Required   Notes
+ ======== ======== ====== ========== ==========================
+  *id*     integer  GET    **Yes**    |calendar.category.ID|
+  *start*  integer  GET    No         |calendar.category.Start|
+  *end*    integer  GET    No         |calendar.category.End|
+  *type*   string   GET    No         |calendar.category.Type|
+ ======== ======== ====== ========== ==========================
+
+.. |calendar.category.ID| replace::
+    The id of the category you wish to query. The list of valid category IDs is available from the :ref:`Categories <module.calendar.Categories>` command.
+
+.. |calendar.category.Start| replace::
+    This parameter is a UNIX timestamp representing the start of a search range for events. Any events starting before this date will be ignored when building the response. If this date occurs later than the *end* parameter, the behavior will be undefined.
+
+.. |calendar.category.End| replace::
+    This parameter is a UNIX timestamp representing the end of a search range for events. Any events starting after this date will be ignored when building the response. If this date occurs earlier than the *start* parameter, the behavior will be undefined.
+ 
+.. |calendar.category.Type| replace::
+   Defaults to 'Events'. Other valid values can be found by calling the :ref:`ExtraTopLevels <module.Calendar.extraTopLevels>` command.
+
 
 Response Schema
 ^^^^^^^^^^^^^^^
@@ -14,15 +39,13 @@ Response Schema
   .. code-block:: json
 
     { "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+      "items" : { "$ref" : "calendar.Event" }}
+
+Type References
+###############
+  
+  * :ref:`calendar.Event <schema.calendar.Event>`
+
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -31,7 +54,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    GET /api/index.php?module=calendar&command=category&id=2 HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
@@ -40,9 +63,42 @@ Example Request
   
     HTTP/1.1 200 OK
     Connection: close
-    Content-Type: application/json; charset=UTF-8
+    Content-Type: application/json
 
-    [{
-      "longName":"Today's Exhibits",
-      "shortName":"Exhibits",
-      "type":"Exhibits" }]
+    [
+        {
+            "cancelled": null, 
+            "coordinate": {
+                "lat": 42.36166709, 
+                "lon": -71.08693798
+            }, 
+            "description": "", 
+            "end": 1358267400, 
+            "event": "129703", 
+            "id": "14991982", 
+            "location": "", 
+            "owner": "5614", 
+            "shortloc": "E25-111", 
+            "start": 1358258400, 
+            "status": "N", 
+            "title": "Logistics Parks: Driving Economic Growth"
+        }, 
+        {
+            "cancelled": null, 
+            "coordinate": {
+                "lat": 42.36228432, 
+                "lon": -71.09762771
+            }, 
+            "description": "", 
+            "end": 1358287200, 
+            "event": "90462", 
+            "id": "14663093", 
+            "location": "MIT Museum at 265 Massachusetts Avenue", 
+            "owner": "1105", 
+            "shortloc": "N51", 
+            "start": 1358262000, 
+            "status": "N", 
+            "title": "Sampling MIT"
+        }
+    ]
+   

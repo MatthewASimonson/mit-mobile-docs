@@ -6,7 +6,7 @@ Default
 Description
 ^^^^^^^^^^^
 
-  This command will search the MIT directory using the string provided in the *q* parameter. Not including the *q* parameter is an error and will result in the command failing. Upon success, the response will have a 200 status code and will contain array of :ref:`People.Info <schema.People.Info>` objects.
+  This command will search the MIT directory using the string provided in the *q* parameter. Not including the *q* parameter is an error and will result in the command failing.
 
 Parameters
 ^^^^^^^^^^
@@ -25,8 +25,21 @@ Response Schema
 
     {
       "type" : "array",
-      "items" : { "$ref" : "People.Info"}
-    }
+      "items" : {
+       "type" : "object",
+       "properties" : {
+         "email" : { "type" : "string" },
+         "givenname" : { "type" : "string" },
+         "id" : { "type" : "string" },
+          
+         "name" : {
+           "type" : "array",
+           "items" : { "type" : "string" }
+         },
+          
+         "surname" : {
+           "type" : "array",
+           "items" : { "type" : "string" }}}}
 
 Example Request
 ^^^^^^^^^^^^^^^

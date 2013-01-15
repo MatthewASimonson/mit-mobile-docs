@@ -18,6 +18,7 @@ Schema
          "minute" : {"type" : "number"},
          "month" : {"type" : "number"},
          "second" : {"type" : "number"},
-         "weekday" : {"type" : "number"},
+         "monthname" : {"type" : "string"}
+         "weekday" : {"type" : "string"},
          "year" : {"type" : "number"}
        }}

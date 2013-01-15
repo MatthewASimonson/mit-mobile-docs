@@ -1,12 +1,12 @@
 .. _module.Calendar.Academic:
 
 Academic
-*******
+********
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  This command returns an array of all the known academic-related events (semester start date, semester end date, etc). This command does not have any additional parameters.
 
 Response Schema
 ^^^^^^^^^^^^^^^
@@ -17,12 +17,10 @@ Response Schema
       "items" : {
         "type" : "object",
         "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+          "end" : { "type" : "number" },
+          "id" : { "type" : "number" },
+          "start" : { "type" : "number" },
+          "title" : { "type" : "string" }}}}
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -31,7 +29,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    GET /api/index.php?module=calendar&command=academic HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
@@ -42,7 +40,23 @@ Example Request
     Connection: close
     Content-Type: application/json; charset=UTF-8
 
-    [{
-      "longName":"Today's Exhibits",
-      "shortName":"Exhibits",
-      "type":"Exhibits" }]
+    [
+        {
+            "end": 1357102800, 
+            "id": 1491185678, 
+            "start": 1355806800, 
+            "title": "GRADE DEADLINE.  GRADES must be submitted according to DUE DATE indicated."
+        }, 
+        {
+            "end": 1357275600, 
+            "id": 535840371, 
+            "start": 1357275600, 
+            "title": "IAP PRE-REGISTRATION DEADLINE. Deadline for all students to pre-register for IAP."
+        }, 
+        {
+            "end": 1357275600, 
+            "id": 1128729003, 
+            "start": 1357275600, 
+            "title": "Term Summaries of Fall Term Grades available to Departments."
+        }
+    ]

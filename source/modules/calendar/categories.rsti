@@ -1,12 +1,24 @@
-.. _module.Calendar.Default:
+.. _module.Calendar.Categories:
 
-Default
-*******
+Categories
+**********
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  Returns a full listing of all the currently available categories. Each category had a unique ID and may have zero or more subcategories. The 'catid' key in the response objects is used in the :ref:`Category <module.calendar.Categories>` command to retreive a filtered list of events for a certain time period.
+  
+Parameters
+^^^^^^^^^^
+
+ ======== ======== ====== ========== ============================
+  Name     Type     Verb   Required   Notes
+ ======== ======== ====== ========== ============================
+  *type*   string   GET    No         |calendar.categories.Type|
+ ======== ======== ====== ========== ============================
+ 
+.. |calendar.categories.Type| replace::
+    Defaults to 'Events'. Other valid values can be found by calling the :ref:`ExtraTopLevels <module.Calendar.extraTopLevels>` command.
 
 Response Schema
 ^^^^^^^^^^^^^^^
@@ -15,14 +27,14 @@ Response Schema
 
     { "type" : "array",
       "items" : {
+        "id"  : "schema.calendar.CategoryInfo"
         "type" : "object",
         "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+          "name" : { "type" : "string" },
+          "catid" : { "type" : "string" },
+          "subcategories" : {
+            "type" : "array",
+            "items" : { "$ref" : "schema.calendar.CategoryInfo" }}}}}
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -31,7 +43,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    GET /api/index.php?module=calendar&command=categories HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
@@ -42,7 +54,47 @@ Example Request
     Connection: close
     Content-Type: application/json; charset=UTF-8
 
-    [{
-      "longName":"Today's Exhibits",
-      "shortName":"Exhibits",
-      "type":"Exhibits" }]
+    [
+        {
+            "catid": "19", 
+            "name": "Arts/Music/Film", 
+            "subcategories": [
+                {
+                    "catid": "3", 
+                    "name": "Dance"
+                }, 
+                {
+                    "catid": "5", 
+                    "name": "Exhibits"
+                }, 
+                {
+                    "catid": "8", 
+                    "name": "Films/Movies"
+                }, 
+                {
+                    "catid": "11", 
+                    "name": "Literary"
+                }, 
+                {
+                    "catid": "1", 
+                    "name": "Music"
+                }, 
+                {
+                    "catid": "125", 
+                    "name": "New Media Arts"
+                }, 
+                {
+                    "catid": "12", 
+                    "name": "Theater"
+                }, 
+                {
+                    "catid": "124", 
+                    "name": "Visual Arts"
+                }
+            ]
+        }, 
+        {
+            "catid": "52", 
+            "name": "Campus Tours"
+        }
+    ]

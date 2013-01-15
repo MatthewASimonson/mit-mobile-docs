@@ -1,12 +1,26 @@
-.. _module.Calendar.Default:
+.. _module.Calendar.ExtraTopLevels:
 
-Default
-*******
+ExtraTopLevels
+**************
 
 Description
 ^^^^^^^^^^^
 
   This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+
+
+Parameters
+^^^^^^^^^^
+
+  +-----------+---------+-------+----------+-----------------+
+  |  Name     | Type    | Verb  | Required | Notes           |
+  +===========+=========+=======+==========+=================+
+  | *version* | integer |  GET  |  No      | |notes-version| |
+  +-----------+---------+-------+----------+-----------------+
+  
+.. |notes-version| replace::
+  Defaults to a value of 1 if unspecified. Current valid values are 1 or 2. If version 2 is specified, the returned objects will have the *hasCategories* key in the returned JSON objects.
+
 
 Response Schema
 ^^^^^^^^^^^^^^^

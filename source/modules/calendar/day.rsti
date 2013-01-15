@@ -6,17 +6,23 @@ Day
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  This command responds with an array of objects representing events for the day represented by the *time* parameter or, if it is not provided, the current date is used. The *event* key in the response objects is the effective ID for the event and is needed when querying for additional information with the :ref:`Detail <module.Calendar.Detail>` command.
 
 Parameters
 ^^^^^^^^^^
 
- ======== ======== ====== ==========
-  Name     Type     Verb   Required
- ======== ======== ====== ==========
-  *time*   integer  GET    No
-  *type*   string   GET    No
- ======== ======== ====== ==========
+ ======== ======== ====== ========== ====================
+  Name     Type     Verb   Required   Notes
+ ======== ======== ====== ========== ====================
+  *time*   integer  GET    No         |calendar.day.Time|
+  *type*   string   GET    No         |calendar.day.Type|
+ ======== ======== ====== ========== ====================
+
+.. |calendar.day.Time| replace::
+    Sets which day's event should be queried. The *time* parameter should be a UNIX timestamp and, if the parameter is missing, the current date will be used.
+ 
+.. |calendar.day.Type| replace::
+   Defaults to 'Events'. Other valid values can be found by calling the :ref:`ExtraTopLevels <module.Calendar.extraTopLevels>` command.
 
 Response Schema
 ^^^^^^^^^^^^^^^
@@ -24,15 +30,13 @@ Response Schema
   .. code-block:: json
 
     { "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+      "items" : { "$ref" : "calendar.Event" }}
+
+Type References
+###############
+  
+  * :ref:`calendar.Event <schema.calendar.Event>`
+
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -41,7 +45,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=calendar&command=extraTopLevels HTTP/1.0
+    GET /api/index.php?module=calendar&command=day&type=Events HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
@@ -50,9 +54,38 @@ Example Request
   
     HTTP/1.1 200 OK
     Connection: close
-    Content-Type: application/json; charset=UTF-8
+    Content-Type: application/json
 
-    [{
-      "longName":"Today's Exhibits",
-      "shortName":"Exhibits",
-      "type":"Exhibits" }]
+    [
+        {
+            "cancelled": null, 
+            "description": "", 
+            "end": 1358312340, 
+            "event": "116085", 
+            "id": "14991991", 
+            "location": "", 
+            "owner": "1112", 
+            "shortloc": "", 
+            "start": 1358226000, 
+            "status": "N", 
+            "title": "getfit@mit registration is open"
+        }, 
+        {
+            "cancelled": null, 
+            "coordinate": {
+                "lat": 42.35879786, 
+                "lon": -71.1014393
+            }, 
+            "description": "", 
+            "end": 1358251200, 
+            "event": "117984", 
+            "id": "14974829", 
+            "location": "", 
+            "owner": "1199", 
+            "shortloc": "NW35-Thirsty Ear Pub", 
+            "start": 1358247600, 
+            "status": "N", 
+            "title": "TEEC Meeting"
+        }
+    ]
+    

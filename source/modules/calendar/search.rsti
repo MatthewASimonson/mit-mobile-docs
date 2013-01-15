@@ -1,28 +1,46 @@
-.. _module.Calendar.Default:
+.. _module.Calendar.Search:
 
-Default
-*******
+Search
+******
 
 Description
 ^^^^^^^^^^^
 
-  This command returns an list of additional default event names that can be queried using the :ref:`Day <module.Calendar.Day>` command.
+  Searches events using the *q* parameter and returns any matching events. The search can span from the current day up to 7 days in the future.
+  
+  
+Parameters
+^^^^^^^^^^
+
+ ======== ======== ====== ========== ========================
+  Name     Type     Verb   Required   Notes
+ ======== ======== ====== ========== ========================
+  *q*      integer  GET    **Yes**    |calendar.search.q|
+  *span*   string   GET    No         |calendar.search.span|
+ ======== ======== ====== ========== ========================
+
+.. |calendar.search.q| replace::
+  The query string to use when searching the events. The string must be URL encoded.
+ 
+.. |calendar.search.span| replace::
+  The number of days to search beyond the current day. This is currently has a maximum value of 7 days in the future
 
 Response Schema
 ^^^^^^^^^^^^^^^
 
   .. code-block:: json
 
-    { "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties" : {
-          "longName" : { "type" : "string" },
-          "shortName" : { "type" : "string" },
-          "type" : { "type" : "string" },
-          "hasCategories" : {
-            "type" : "boolean",
-            "required" : false }}}}
+    { "type" : "object",
+      "properties" : {
+        "events" : {
+          "type" : "array",
+          "items" : { "$ref" : "calendar.Event" }},
+        "span"  : {"type" : "number"}}
+
+Type References
+###############
+
+  * :ref:`calendar.Event <schema.calendar.Event>`
 
 Example Request
 ^^^^^^^^^^^^^^^
