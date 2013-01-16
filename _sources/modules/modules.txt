@@ -9,3 +9,4 @@ API Modules
   calendar/_index
   emergency/_index
   people/_index
+  shuttles/_index
