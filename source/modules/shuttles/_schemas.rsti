@@ -1,134 +1,14 @@
 JSON Schemas
 ************
 
-.. _schema.calendar.Event:
+.. _schema.shuttles.RouteInfo:
 
-calendar.Event
-^^^^^^^^^^^^^^
+shuttles.RouteInfo
+^^^^^^^^^^^^^^^^^^
 
   .. code-block:: json
   
     { "type" : "object",
       "properties" : {
-        "id" : { "type" : "number" }
-        "canceled" : { "type" : "boolean" },
-        "description" : { "type" : "string" },
-        "end" : { "type" : "number", "description" : "UNIX Timestamp" },
-        "event" : { "type" : "string", "description"},
-        "location" : { "type" : "string" },
-        "owner" : { "type" : "string" },
-        "shortloc" : { "type" : "string" },
-        "start" : { "type" : "number" },
-        "status" : { "type" : "string" },
-        "title" : { "type" : "string" },
-        "coordinate" : {
-          "type" : "object",
-          "properties" : {
-            "lat" : { "type" : "number" },
-            "lon" : { "type" : "number" }}}}}
-
-.. _schema.calendar.EventCategory:
-
-calendar.EventCategory
-^^^^^^^^^^^^^^^^^^^^^^
-  
-  .. code-block:: json
-    
-    { "id" : "schema.calendar.EventCategory",
-      "description" : "",
-      "type" : "object",
-      "properties" : {
-        "catid" : { "type" : "number" },
-        "invisible" : { "type" : "boolean" },
-        "name" : { "type" : "string" },
-        "obsolete" : { "type" : "boolean" }}}
-
-.. _schema.calendar.EventSponsor:
-
-calendar.EventSponsor
-^^^^^^^^^^^^^^^^^^^^^
-  
-    .. code-block:: json
-  
-       { "id" : "schema.calendar.EventSponsor",
-         "description" : "",
-         "type" : "object",
-         "properties" : {
-           "authorized" : { "type" : "boolean" },
-           "privatemail" : { "type" : "string" },
-           "location" : { "type" : "string" },
-           "invisible" : { "type" : "boolean" },
-           "name" : { "type" : "string" },
-           "contact" : { "type" : "string" },
-           "phone" : { "type" : "string", "description" : "Must be in the format 'nnn.nnn.nnnn'" },
-           "publicmail" : { "type" : "string" },
-           "special" : { "type" : "boolean" },
-           "url" : { "type" : "string" },
-           "groupid" : { "type" : "number" },
-           "defunct" : { "type" : "boolean" }}}
-
-.. _schema.calendar.EventPattern:
-
-calendar.EventPattern
-^^^^^^^^^^^^^^^^^^^^^
-  
-    .. code-block:: json
-      
-      { "type" : "object",
-        "properties" : {
-          "month_of_year" : { "type" : "number" },
-          "week_of_month" : { "type" : "number" },
-          "day_of_month" : { "type" : "number" },
-          "day_of_week" : { "type" : "number" },
-          "exclude_holidays" : { "type" : "number" },
-          "multiplier" : { "type" : "number" },
-          "order" : { "type" : "number" },
-          "subtype" : { "type" : "number" },
-          "unit" : { "type" : "string" },
-          "startdate" : {
-            "type" : "object",
-            "properties" : {
-              "day" : {"type" : "number"},
-              "hour" : {"type" : "number"},
-              "minute" : {"type" : "number"},
-              "month" : {"type" : "number"},
-              "second" : {"type" : "number"},
-              "monthname" : {"type" : "string"},
-              "weekday" : {"type" : "string"},
-              "year" : {"type" : "number"}}},
         
-          "starttime" : {
-            "type" : "object",
-            "properties" : {
-              "day" : {"type" : "number"},
-              "hour" : {"type" : "number"},
-              "minute" : {"type" : "number"},
-              "month" : {"type" : "number"},
-              "second" : {"type" : "number"},
-              "monthname" : {"type" : "string"},
-              "weekday" : {"type" : "string"},
-              "year" : {"type" : "number"}}},
-        
-          "enddate" : {
-            "type" : "object",
-            "properties" : {
-              "day" : {"type" : "number"},
-              "hour" : {"type" : "number"},
-              "minute" : {"type" : "number"},
-              "month" : {"type" : "number"},
-              "second" : {"type" : "number"},
-              "monthname" : {"type" : "string"},
-              "weekday" : {"type" : "string"},
-              "year" : {"type" : "number"}}},
-        
-          "endtime" : {
-            "type" : "object",
-            "properties" : {
-              "day" : {"type" : "number"},
-              "hour" : {"type" : "number"},
-              "minute" : {"type" : "number"},
-              "month" : {"type" : "number"},
-              "second" : {"type" : "number"},
-              "monthname" : {"type" : "string"},
-              "weekday" : {"type" : "string"},
-              "year" : {"type" : "number"}}}}}
+      }}

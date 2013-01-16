@@ -1,8 +1,8 @@
-.. _module.Calendar:
-.. |module| replace:: module.Calendar
+.. _module.Shuttles:
+.. |module| replace:: module.Shuttles
 
-Calendar
-~~~~~~~~~
+Shuttles
+~~~~~~~~
 
 .. contents:: Commands
   :depth: 1
@@ -12,36 +12,4 @@ Calendar
 
 ----
 
-.. include:: academic.rsti
-
-----
-
-.. include:: categories.rsti
-
-----
-
-.. include:: category.rsti
-
-----
-
-.. include:: day.rsti
-
----
-
-.. include:: detail.rsti
-
-----
-
-.. include:: extraTopLevels.rsti
-
-----
-
-.. include:: holidays.rsti
-
-----
-
-.. include:: search.rsti
-
-----
-
-.. include:: schemas.rsti
+.. include:: _schemas.rsti
