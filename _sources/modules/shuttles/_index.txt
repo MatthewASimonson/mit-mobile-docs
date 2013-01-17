@@ -12,4 +12,12 @@ Shuttles
 
 ----
 
-.. include:: _schemas.rsti
+.. include:: routes.rsti
+
+----
+
+.. include:: routeInfo.rsti
+
+----
+
+.. include:: stopInfo.rsti
