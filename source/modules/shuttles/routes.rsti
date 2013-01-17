@@ -1,0 +1,94 @@
+.. _module.Shuttles.Routes:
+
+Routes (*routes*)
+*****************
+
+Description
+^^^^^^^^^^^
+
+  This command returns a list of all known routes, each stop on the route and a polyline (using WGS84 coordinates) showing the path the route will take. An important note is that the 'next' property in the 'stops' array is a UNIX timestamp and each prediction is an offset from the nearest 'next'.
+
+Parameters
+^^^^^^^^^^
+
+ =========== ========= ====== ========== ==============================
+  Name        Type      Verb   Required   Notes
+ =========== ========= ====== ========== ==============================
+  *compact*   boolean   GET    No         |shuttles.routes.compact|
+ =========== ========= ====== ========== ==============================
+
+.. |shuttles.routes.compact| replace::
+    If **True**, the 'stops' key will be not be present in the response objects.
+
+Response Schema
+^^^^^^^^^^^^^^^
+
+  .. code-block:: json
+  
+    {"type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "gpsActive" : { "type" : "boolean" },
+          "interval" : { "type" : "number" },
+          "isRunning" : { "type" : "boolean" },
+          "isSafeRide" : { "type" : "boolean" },
+          "route_id" : { "type" : "string" },
+          "summary" : { "type" : "string" },
+          "title" : { "type" : "string" },
+          
+          "stops" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "id" : { "type" : "string" },
+                "lat" : { "type" : "number" },
+                "lon" : { "type" : "number" },
+                "next" : { "type" : "number", "description" : "UNIX Timestamp" },
+                "path" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "lat" : { "type" : "number" },
+                      "lon" : { "type" : "number" }}}},
+                "predictions" : {
+                  "type" : "array",
+                  "items" : { "type" : "number" }},
+                "title" : { "type" : "string" }}}}}}}
+
+Android Example
+^^^^^^^^^^^^^^^
+
+  .. code-block:: java
+  
+    URL url = new URL("http://m.mit.edu/api/index.php?module=shuttles&command=routes");
+    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+    try {
+      InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+      readStream(in);
+    finally {
+      urlConnection.disconnect();
+    }
+
+Example Request
+^^^^^^^^^^^^^^^
+
+  .. highlight:: http
+
+  Request::
+
+    GET /api/index.php?module=shuttles&command=routes&compact=1 HTTP/1.0
+    Host: m.mit.edu
+    Accept: application/json
+
+
+  Response::
+  
+    HTTP/1.1 200 OK
+    Date: Wed, 04 Jan 2012 14:54:22 GMT
+    Connection: close
+    Content-Type: application/json; charset=UTF-8
+    
+     [{"gpsActive":true,"interval":25,"isRunning":true,"isSafeRide":false,"route_id":"boston","stops":[{"id":"mass84_d","lat":42.35952,"lon":-71.09416,"next":1358441110,"path":[{"lat":42.35092,"lon":-71.08941},{"lat":42.35094,"lon":-71.08944},{"lat":42.3509699,"lon":-71.08947},{"lat":42.35102,"lon":-71.08951}],"predictions":[2780,4280,5780],"title":"84 Mass Ave"}]}]

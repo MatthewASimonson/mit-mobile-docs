@@ -1,0 +1,44 @@
+.. _module.shuttles.routeInfo:
+
+RouteInfo (*routeInfo*)
+***********************
+
+Description
+^^^^^^^^^^^
+
+  This module has no default command and returns an empty JSON array.
+
+Parameters
+^^^^^^^^^^
+
+ ======== ========= ====== ========== ===========================
+  Name     Type      Verb   Required   Notes
+ ======== ========= ====== ========== ===========================
+  *id*     integer   GET    **Yes**    |shuttles.routeInfo.id|
+  *full*   boolean   GET    No         |shuttles.routeInfo.full|
+ ======== ========= ====== ========== ===========================
+
+.. |shuttles.routeInfo.id| replace::
+    The *id* of the route you wish to query. The *id* can be retreived from the :ref:`shuttles.Routes <module.shuttles.routes>` response.
+ 
+.. |shuttles.routeInfo.full| replace::
+   Some argument?
+   
+Example Request
+^^^^^^^^^^^^^^^
+
+  .. highlight:: http
+
+  Request::
+
+    GET /api/index.php?module=shuttles&command=routeInfo HTTP/1.0
+    Host: m.mit.edu
+    Accept: application/json
+
+
+  Response::
+  
+    HTTP/1.1 200 OK
+    Date: Wed, 04 Jan 2012 14:54:22 GMT
+    Connection: close
+    Content-Type: application/json; charset=UTF-8
