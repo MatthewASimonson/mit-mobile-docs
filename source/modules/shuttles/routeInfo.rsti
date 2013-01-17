@@ -6,7 +6,7 @@ RouteInfo (*routeInfo*)
 Description
 ^^^^^^^^^^^
 
-  This module has no default command and returns an empty JSON array.
+  This command's response contains details about the queried route *id*. The command takes an optional *full* parameter which will add a polyline representing the route to the response.
 
 Parameters
 ^^^^^^^^^^
@@ -22,8 +22,16 @@ Parameters
     The *id* of the route you wish to query. The *id* can be retreived from the :ref:`shuttles.Routes <module.shuttles.routes>` response.
  
 .. |shuttles.routeInfo.full| replace::
-   Some argument?
-   
+   Include the polyline path for the route. Each point contains longitude and latitude values in the WGS84 spatial reference.
+  
+
+Response Schema
+^^^^^^^^^^^^^^^
+
+  .. code-block:: json
+  
+    
+
 Example Request
 ^^^^^^^^^^^^^^^
 
@@ -31,7 +39,7 @@ Example Request
 
   Request::
 
-    GET /api/index.php?module=shuttles&command=routeInfo HTTP/1.0
+    GET /api/index.php?module=shuttles&command=routeInfo&id=tech&full=0 HTTP/1.0
     Host: m.mit.edu
     Accept: application/json
 
