@@ -56,14 +56,14 @@
 <div class="contents local topic" id="commands">
 <p class="topic-title first">Commands</p>
 <ul class="simple">
-<li><a class="reference internal" href="#default" id="id9">Default</a></li>
-<li><a class="reference internal" href="#routes-routes" id="id10">Routes (<em>routes</em>)</a></li>
-<li><a class="reference internal" href="#routeinfo-routeinfo" id="id11">RouteInfo (<em>routeInfo</em>)</a></li>
-<li><a class="reference internal" href="#stopinfo-stopinfo" id="id12">StopInfo (<em>stopInfo</em>)</a></li>
+<li><a class="reference internal" href="#default" id="id10">Default</a></li>
+<li><a class="reference internal" href="#routes-routes" id="id11">Routes (<em>routes</em>)</a></li>
+<li><a class="reference internal" href="#routeinfo-routeinfo" id="id12">RouteInfo (<em>routeInfo</em>)</a></li>
+<li><a class="reference internal" href="#stopinfo-stopinfo" id="id13">StopInfo (<em>stopInfo</em>)</a></li>
 </ul>
 </div>
 <div class="section" id="default">
-<span id="module-shuttles-default"></span><h2><a class="toc-backref" href="#id9">1.4.1. Default</a><a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h2>
+<span id="module-shuttles-default"></span><h2><a class="toc-backref" href="#id10">1.4.1. Default</a><a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description">
 <h3>1.4.1.1. Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -72,7 +72,7 @@
 </div>
 </div>
 <div class="section" id="routes-routes">
-<span id="module-shuttles-routes"></span><h2><a class="toc-backref" href="#id10">1.4.2. Routes (<em>routes</em>)</a><a class="headerlink" href="#routes-routes" title="Permalink to this headline">¶</a></h2>
+<span id="module-shuttles-routes"></span><h2><a class="toc-backref" href="#id11">1.4.2. Routes (<em>routes</em>)</a><a class="headerlink" href="#routes-routes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>1.4.2.1. Description<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -185,11 +185,11 @@
 </div>
 </div>
 <div class="section" id="routeinfo-routeinfo">
-<span id="module-shuttles-routeinfo"></span><h2><a class="toc-backref" href="#id11">1.4.3. RouteInfo (<em>routeInfo</em>)</a><a class="headerlink" href="#routeinfo-routeinfo" title="Permalink to this headline">¶</a></h2>
+<span id="module-shuttles-routeinfo"></span><h2><a class="toc-backref" href="#id12">1.4.3. RouteInfo (<em>routeInfo</em>)</a><a class="headerlink" href="#routeinfo-routeinfo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
 <h3>1.4.3.1. Description<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>This module has no default command and returns an empty JSON array.</div></blockquote>
+<div>This command&#8217;s response contains details about the queried route <em>id</em>. The command takes an optional <em>full</em> parameter which will add a polyline representing the route to the response.</div></blockquote>
 </div>
 <div class="section" id="id3">
 <h3>1.4.3.2. Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -221,17 +221,25 @@
 <td>boolean</td>
 <td>GET</td>
 <td>No</td>
-<td>Some argument?</td>
+<td>Include the polyline path for the route. Each point contains longitude and latitude values in the WGS84 spatial reference.</td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
-<h3>1.4.3.3. Example Request<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>1.4.3.3. Response Schema<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>1.4.3.4. Example Request<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Request:</p>
-<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/index.php?module=shuttles&amp;command=routeInfo</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.0</span>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/index.php?module=shuttles&amp;command=routeInfo&amp;id=tech&amp;full=0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.0</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">m.mit.edu</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
 </pre></div>
@@ -248,14 +256,14 @@
 </div>
 </div>
 <div class="section" id="stopinfo-stopinfo">
-<span id="module-shuttles-stopinfo"></span><h2><a class="toc-backref" href="#id12">1.4.4. StopInfo (<em>stopInfo</em>)</a><a class="headerlink" href="#stopinfo-stopinfo" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>1.4.4.1. Description<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<span id="module-shuttles-stopinfo"></span><h2><a class="toc-backref" href="#id13">1.4.4. StopInfo (<em>stopInfo</em>)</a><a class="headerlink" href="#stopinfo-stopinfo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>1.4.4.1. Description<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>This command returns detail information about a single stop. This information includes data from all routes that use this stop and includes estimations for the shuttles next arrival time. The response also includes data indicating if the shuttle has active location assistance (the predictions may be more accurate if it does). Like the <a class="reference internal" href="#module-shuttles-routes"><em>Routes (routes)</em></a> and <a class="reference internal" href="#module-shuttles-routeinfo"><em>RouteInfo (routeInfo)</em></a> commands, all times are represented by UNIX timestamps and the predictions are integer offsets.</div></blockquote>
 </div>
-<div class="section" id="id6">
-<h3>1.4.4.2. Parameters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>1.4.4.2. Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -284,8 +292,8 @@
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h3>1.4.4.3. Response Schema<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>1.4.4.3. Response Schema<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-json"><div class="highlight"><pre><span class="p">{</span> <span class="nt">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
   <span class="nt">&quot;properties&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -308,8 +316,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h3>1.4.4.4. Example Request<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>1.4.4.4. Example Request<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Request:</p>
 <div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/index.php?module=shuttles&amp;command=stopInfo&amp;id=mass84_d</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.0</span>
