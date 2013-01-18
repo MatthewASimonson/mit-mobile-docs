@@ -30,7 +30,51 @@ Response Schema
 
   .. code-block:: json
   
-    
+    {"type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "gpsActive" : { "type" : "boolean" },
+          "interval" : { "type" : "number" },
+          "isRunning" : { "type" : "boolean" },
+          "isSafeRide" : { "type" : "boolean" },
+          "route_id" : { "type" : "string" },
+          "summary" : { "type" : "string" },
+          "title" : { "type" : "string" },
+          
+          "stops" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "id" : { "type" : "string" },
+                "lat" : { "type" : "number" },
+                "lon" : { "type" : "number" },
+                "next" : { "type" : "number", "description" : "UNIX Timestamp" },
+                "path" : {
+                  "description" : "Only present if the *full* parameter is 'true'"
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "lat" : { "type" : "number" },
+                      "lon" : { "type" : "number" }}}},
+                "predictions" : {
+                  "type" : "array",
+                  "items" : { "type" : "number" }},
+                "title" : { "type" : "string" }}}},
+          "vehicleLocations" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "agencyID" : { "type" : "mit" },
+                "heading" : { "type" : "number" },
+                "iconURL" : { "type" : "string" },
+                "lat" : { "type" : "number" },
+                "long" : { "type" : "number" },
+                "routeID" : { "type" : "tech" },
+                "secsSinceReport" : { "type" : "integer" }}}}}}}
 
 Example Request
 ^^^^^^^^^^^^^^^
@@ -50,3 +94,63 @@ Example Request
     Date: Wed, 04 Jan 2012 14:54:22 GMT
     Connection: close
     Content-Type: application/json; charset=UTF-8
+
+    {
+      "gpsActive": true, 
+      "interval": 7, 
+      "isRunning": true, 
+      "isSafeRide": false, 
+      "now": 1358521468, 
+      "route_id": "tech", 
+      "stops": [
+        {
+          "id": "kendsq_d", 
+          "lat": 42.36237, 
+          "lon": -71.08613, 
+          "next": 1358521659, 
+          "predictions": [
+            665, 
+            1265, 
+            1865, 
+            3065
+          ], 
+          "title": "Kendall Square"
+        }, 
+        {
+          "id": "amhewads", 
+          "lat": 42.361272, 
+          "lon": -71.0843897, 
+          "next": 1358521750, 
+          "predictions": [
+            756, 
+            1356, 
+            1956, 
+            3156
+          ], 
+          "title": "Amherst/Wadsworth"
+        }
+      ], 
+      "summary": "Runs weekdays 6:15am-7:10pm, all year round.", 
+      "title": "Tech Shuttle", 
+      "vehicleLocations": [
+        {
+          "agencyID": "mit", 
+          "heading": "246", 
+          "iconURL": "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus%7Cb12727", 
+          "lat": "42.35496", 
+          "lon": "-71.10225", 
+          "routeID": "tech", 
+          "secsSinceReport": 228
+        }, 
+        {
+          "agencyID": "mit", 
+          "heading": "51", 
+          "iconURL": "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus%7Cb12727", 
+          "lat": "42.36071", 
+          "lon": "-71.09377", 
+          "routeID": "tech", 
+          "secsSinceReport": 20
+        }
+      ]
+    }
+    
