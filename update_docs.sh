@@ -8,9 +8,6 @@ if [[ "${branch}" == "master" ]]; then
   make html
   git checkout gh-pages
 
-  ls -1 build/html | xargs -I% rm -rf "%"
-  mv build/html/* ./
-
   git commit -a -m"Updated to commit ${branch}:${revision}"
 
   git checkout master
