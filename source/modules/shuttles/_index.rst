@@ -1,8 +1,8 @@
 .. _module.Shuttles:
 .. |module| replace:: module.Shuttles
 
-Shuttles
-~~~~~~~~
+Shuttles (*shuttles*)
+~~~~~~~~~~~~~~~~~~~~~
 
 .. contents:: Commands
   :depth: 1

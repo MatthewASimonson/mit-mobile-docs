@@ -1,7 +1,7 @@
 .. _module.People:
 
-People
-~~~~~~
+People (*people*)
+~~~~~~~~~~~~~~~~~
 
 .. contents:: Commands
   :depth: 1

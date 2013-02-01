@@ -1,8 +1,8 @@
 .. _module.Calendar:
 .. |module| replace:: module.Calendar
 
-Calendar
-~~~~~~~~~
+Calendar (*calendar*)
+~~~~~~~~~~~~~~~~~~~~~
 
 .. contents:: Commands
   :depth: 1
