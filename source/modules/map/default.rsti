@@ -1,0 +1,9 @@
+.. _module.Map.Category:
+
+Default
+*******
+
+Description
+^^^^^^^^^^^
+
+  This module has no default command and returns an empty JSON array.

@@ -1,0 +1,21 @@
+.. _module.map.Category:
+
+Category (*category*)
+*********************
+
+Description
+^^^^^^^^^^^
+
+  This module has no default command and returns an empty JSON array.
+
+Parameters
+^^^^^^^^^^
+
+ ======== ========= ====== ========== ===========================
+  Name     Type      Verb   Required   Notes
+ ======== ========= ====== ========== ===========================
+  *id*     integer   GET    **Yes**    |map.category.id|
+ ======== ========= ====== ========== ===========================
+
+.. |calendar.category.id| replace::
+    The *id* of the route you wish to query. The *id* can be retreived from the :ref:`map.CategoryList <module.map.CategoryList>` command.

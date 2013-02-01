@@ -1,0 +1,21 @@
+.. _module.Map.Categories:
+
+Categories (*categories*)
+*************************
+
+Description
+^^^^^^^^^^^
+
+  This module has no default command and returns an empty JSON array.
+
+Parameters
+^^^^^^^^^^
+
+  This command does not have any required or optional parameters.
+
+Response Schema
+^^^^^^^^^^^^^^^
+
+  .. code-block:: json
+  
+    
